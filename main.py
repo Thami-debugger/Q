@@ -3,7 +3,6 @@ import qrcode
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
 app = Flask(__name__)
@@ -17,6 +16,10 @@ average_time_per_person = int(os.getenv('AVERAGE_TIME_PER_PERSON', 5))  # in min
 
 ADMIN_USERNAME = os.getenv('ADMIN_USERNAME', 'admin')
 ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD', 'password')
+
+# Ensure the static directory exists
+if not os.path.exists('static'):
+    os.makedirs('static')
 
 @app.route('/')
 def index():
